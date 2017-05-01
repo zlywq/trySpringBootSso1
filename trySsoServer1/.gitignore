@@ -2,6 +2,7 @@
 .idea
 .settings
 target
+t1
 .classpath
 .factorypath
 .project

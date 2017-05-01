@@ -44,10 +44,14 @@ public class LoginController {
         return "redirect:/";
     }
 
-//    @RequestMapping("/")
-//    public String home(){
-//        return "index";
-//    }
+    
+    /*
+模仿https://github.com/spring-cloud-samples/authserver里面的东西，但未能成功显示页面
+     */
+    @RequestMapping("/oauth/confirm_access")
+    public String confirm_access(){
+        return "confirm_access";
+    }
 
 
 }

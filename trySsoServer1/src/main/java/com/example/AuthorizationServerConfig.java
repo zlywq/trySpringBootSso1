@@ -59,7 +59,7 @@ Error creating bean with name 'scopedTarget.clientDetailsService' defined in cla
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory().withClient("acme").secret("acmesecret")
                 .autoApprove(true)
-                .authorizedGrantTypes("authorization_code", "refresh_token").scopes("openid","read","write");
+                .authorizedGrantTypes("authorization_code", "refresh_token","password").scopes("openid","read","write");
                 //.scopes("openid","read","write");
                 //.authorizedGrantTypes("password","authorization_code", "refresh_token","implicit","client_credentials");//.scopes("openid");
     }

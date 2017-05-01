@@ -63,7 +63,10 @@ import org.springframework.web.filter.CompositeFilter;
 
 
 
-
+/*
+注意官方例子 https://github.com/spring-cloud-samples/authserver 没有改sessionID，
+而是用了@SessionAttributes("authorizationRequest"),待研究......
+ */
 
 @SpringBootApplication
 @ComponentScan(basePackageClasses = ServerApplication.class)
