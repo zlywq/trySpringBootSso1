@@ -1,1 +1,1 @@
-Hello trySpringBootSso
+参考一些例子实现的几乎是最简的但可运行的spring boot oauth2 sso server 和 client.
