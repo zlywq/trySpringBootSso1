@@ -1,0 +1,60 @@
+server:
+  port: 9999
+myOauthServer: 
+  #hostUrl: http://localhost
+  hostUrl: http://localhost:8080
+  #logoutUrl: ${myOauthServer.hostUrl}/signout
+  logoutUrl: ${myOauthServer.hostUrl}/spring-oauth-server/logout
+  # seem no logout
+security:
+  oauth2:
+    sso:
+        loginPath: /login
+    client:
+      clientId: unity-client
+      clientSecret: unity
+      accessTokenUri: ${myOauthServer.hostUrl}/spring-oauth-server/oauth/token
+      userAuthorizationUri: ${myOauthServer.hostUrl}/spring-oauth-server/oauth/authorize
+      clientAuthenticationScheme: form
+    resource:
+    #  jwt:
+    #      keyUri: ${myOauthServer.hostUrl}/spring-oauth-server/oauth/token_key
+      user-info-uri: ${myOauthServer.hostUrl}/spring-oauth-server/unity/user_info
+      # Binding to target org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties@67a20f67 failed: ...  Reason: Missing tokenInfoUri and userInfoUri and there is no JWT verifier key
+#security:
+#  ignored: /favicon.ico,/scripts/**,/styles/**,/images/**
+#  sessions: ALWAYS
+#  oauth2:
+#      sso:
+#        loginPath: /login
+#      client:
+#        clientId: ssoclient
+#        clientSecret: ssosecret
+#        accessTokenUri: ${myOauthServer.hostUrl}/oauth/token
+#        userAuthorizationUri: ${myOauthServer.hostUrl}/oauth/authorize
+#        clientAuthenticationScheme: form
+#      resource:
+#        jwt:
+#          keyUri: ${myOauthServer.hostUrl}/oauth/token_key
+securityconfig:
+  logoutsuccssurl: /signout2
+  permitall: /rest/**,/bb**,/logout
+  deniedpage: /deny
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+# MANAGEMENT HTTP SERVER (ManagementServerProperties)
+#management.context-path= # Management endpoint context-path. For instance `/actuator`
+management:
+    context-path=/actuator
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    com.example: DEBUG
+
+    
