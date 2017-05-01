@@ -1,0 +1,65 @@
+server:
+  port: 9997
+myOauthServer: 
+  #hostUrl: http://localhost
+  hostUrl: http://localhost:8080
+  #logoutUrl: ${myOauthServer.hostUrl}/signout
+  logoutUrl: ${myOauthServer.hostUrl}/logout
+  # directly to some1 oauth server /logout FAIL to logout
+security:
+  oauth2:
+    sso:
+        loginPath: /login
+    client:
+      clientId: acme
+      clientSecret: acmesecret
+      accessTokenUri: ${myOauthServer.hostUrl}/uaa/oauth/token
+      userAuthorizationUri: ${myOauthServer.hostUrl}/uaa/oauth/authorize
+      #clientAuthenticationScheme: form
+    resource:
+      jwt:
+        #keyUri: ${myOauthServer.hostUrl}/uaa/oauth/token_key
+        keyValue: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnGp/Q5lh0P8nPL21oMMrt2RrkT9AW5jgYwLfSUnJVc9G6uR3cXRRDCjHqWU5WYwivcF180A6CWp/ireQFFBNowgc5XaA0kPpzEtgsA5YsNX7iSnUibB004iBTfU9hZ2Rbsc8cWqynT0RyN4TP1RYVSeVKvMQk4GT1r7JCEC+TNu1ELmbNwMQyzKjsfBXyIOCFU/E94ktvsTZUHF4Oq44DBylCDsS1k7/sfZC2G5EU7Oz0mhG8+Uz6MSEQHtoIi6mc8u64Rwi3Z3tscuWG2ShtsUFuNSAFNkY7LkLn+/hxLCu2bNISMaESa8dG22CIMuIeRLVcAmEWEWH5EEforTg+QIDAQAB
+          -----END PUBLIC KEY-----
+      id: openid
+      serviceId: ${PREFIX:}resource
+#      user-info-uri: ${myOauthServer.hostUrl}/me
+#security:
+#  ignored: /favicon.ico,/scripts/**,/styles/**,/images/**
+#  sessions: ALWAYS
+#  oauth2:
+#      sso:
+#        loginPath: /login
+#      client:
+#        clientId: ssoclient
+#        clientSecret: ssosecret
+#        accessTokenUri: ${myOauthServer.hostUrl}/oauth/token
+#        userAuthorizationUri: ${myOauthServer.hostUrl}/oauth/authorize
+#        clientAuthenticationScheme: form
+#      resource:
+#        jwt:
+#          keyUri: ${myOauthServer.hostUrl}/oauth/token_key
+securityconfig:
+  logoutsuccssurl: /signout2
+  permitall: /rest/**,/bb**,/logout
+  deniedpage: /deny
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+# MANAGEMENT HTTP SERVER (ManagementServerProperties)
+#management.context-path= # Management endpoint context-path. For instance `/actuator`
+management:
+    context-path=/actuator
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    com.example: DEBUG
+
+    
