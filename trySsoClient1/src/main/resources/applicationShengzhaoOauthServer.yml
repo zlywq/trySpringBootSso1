@@ -4,7 +4,7 @@ myOauthServer:
   #hostUrl: http://localhost
   hostUrl: http://localhost:8080
   #logoutUrl: ${myOauthServer.hostUrl}/signout
-  logoutUrl: ${myOauthServer.hostUrl}/spring-oauth-server/logout
+  logoutUrl: ${myOauthServer.hostUrl}/spring-oauth-server/logout.do
   # seem no logout
 security:
   oauth2:
