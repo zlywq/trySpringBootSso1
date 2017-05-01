@@ -1,0 +1,18 @@
+
+
+参考 https://github.com/spring-guides/tut-spring-boot-oauth2 的 github 和 https://github.com/chenfromsz/spring-boot-sso 的 web1 来实现。
+这里单纯作为 sso 的 client端。
+
+另外发现 https://github.com/chenfromsz/spring-boot-sso 应该参考了 https://github.com/spring-cloud-samples/sso 。
+
+注意logout时，需要做post，并且需要在form中加 _csrf 的hidden的input，并且本client的Security配置中配置了logoutsuccssurl为/signout2，
+然后在/signout2对应的网页再跳转oauth server的/signout，这个 /signout 的处理里面做了request.logout()，再从返回的页面跳转到oauth server的/login。但是为何不直接跳转oauth server的logout呢......
+
+
+
+
+
+
+
+
+
