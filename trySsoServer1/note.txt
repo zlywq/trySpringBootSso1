@@ -1,0 +1,13 @@
+
+
+参考 https://github.com/chenfromsz/spring-boot-sso 的 login 来实现,
+也参考了 https://github.com/spring-guides/tut-spring-boot-oauth2 的 auth-server，但帮助不大。
+这里单纯作为 sso 的 server端。resource服务尚未试验。
+
+
+
+
+
+
+
+
