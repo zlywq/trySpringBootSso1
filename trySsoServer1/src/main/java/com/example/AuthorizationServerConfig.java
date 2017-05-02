@@ -58,7 +58,7 @@ Error creating bean with name 'scopedTarget.clientDetailsService' defined in cla
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory().withClient("acme").secret("acmesecret")
-                .autoApprove(true)
+                //.autoApprove(true)//注意这个如果为true，则/oauth/confirm_access页面不会显示
                 .authorizedGrantTypes("authorization_code", "refresh_token","password").scopes("openid","read","write");
                 //.scopes("openid","read","write");
                 //.authorizedGrantTypes("password","authorization_code", "refresh_token","implicit","client_credentials");//.scopes("openid");

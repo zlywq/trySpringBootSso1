@@ -46,7 +46,7 @@ public class LoginController {
 
     
     /*
-模仿https://github.com/spring-cloud-samples/authserver里面的东西，但未能成功显示页面
+注意如果在AuthorizationServerConfigurerAdapter的子类的configure(ClientDetailsServiceConfigurer clients)里面进行了autoApprove(true)，则这个页面不起作用。
      */
     @RequestMapping("/oauth/confirm_access")
     public String confirm_access(){

@@ -11,8 +11,10 @@
 		<h2>Please Confirm</h2>
 
 		<p>
-			Do you authorize "${authorizationRequest.clientId}" at "${authorizationRequest.redirectUri}" to access your protected resources
-			with scope ${authorizationRequest.scope?join(", ")}.
+			Do you authorize <span th:text="${authorizationRequest.clientId}"></span>  
+			at <span th:text="${authorizationRequest.redirectUri}"></span>  
+			to access your protected resources
+			with scope <span th:text="${#strings.arrayJoin(authorizationRequest.scope,',')}"></span> ?
 		</p>
 		<form id="confirmationForm" name="confirmationForm"
 			action="../oauth/authorize" method="post">
